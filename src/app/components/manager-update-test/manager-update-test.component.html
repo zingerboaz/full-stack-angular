@@ -1,0 +1,9 @@
+<select class="form-select form-select-sm" aria-label=".form-select-sm example">
+  <option selected>Open this select menu</option>
+ <option *ngFor="let i of fireBaseService.allUsers" >{{i}}</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</select>
+
+
+<!-- <option *ngFor="let user fireBase.ofallUsers" value="1">{{user.full_name}}</option> -->

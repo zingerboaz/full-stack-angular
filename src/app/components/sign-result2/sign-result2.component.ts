@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { HomeService } from 'src/app/services/home.service';
 import { ServerService } from 'src/app/services/server.service';
 
@@ -13,7 +14,10 @@ export class SignResult2Component implements OnInit {
   updatedcompletepersonForm: any;
   updatepersonForm: any;
   user: any;
-  constructor(private serverService: ServerService, private homeService: HomeService) { }
+  roleNumber=100;
+
+
+  constructor(private serverService: ServerService, private homeService: HomeService,private router:Router) { }
 
   ngOnInit(): void {
 
@@ -31,11 +35,12 @@ export class SignResult2Component implements OnInit {
   sendForm() {
     const obj: any = {};
     for (const field in this.updatepersonForm.controls) { // 'field' is a string
-      obj[field] = this.updatepersonForm.controls[field].value;
+      obj[field] = this.updatepersonForm.controls[field].value,this.roleNumber;
       console.log(obj)
+      this.router.navigate(["/app-login1"]); 
     }
 
-    const data = { ...this.user, ...obj };
+    const data = { roleNumber : this.roleNumber ,...this.user, ...obj, };
 
     this.serverService.updateUser(data).subscribe(res => {
       this.homeService.setUser(data);

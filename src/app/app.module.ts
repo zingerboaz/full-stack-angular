@@ -1,5 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { environment } from '../environments/environment';
+
+
 import {FormsModule,ReactiveFormsModule} from'@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -16,6 +23,16 @@ import { SignResult2Component } from './components/sign-result2/sign-result2.com
 import { TestComponent } from './components/test/test.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { Login1Component } from './components/login1/login1.component';
+import { PractisesComponent } from './components/practises/practises.component';
+import { UploadFormComponent } from './components/upload-form/upload-form.component';
+import { UploadListComponent } from './components/upload-list/upload-list.component';
+import { UploadDetailsComponent } from './components/upload-details/upload-details.component';
+import { ManagerComponent } from './components/manager/manager.component';
+import { ManagerUsersComponent } from './components/manager-users/manager-users.component';
+import { CreatTestComponent } from './components/creat-test/creat-test.component';
+import { TestPageComponent } from './components/test-page/test-page.component';
+import { UploadInternComponent } from './components/upload-intern/upload-intern.component';
+import { ManagerUpdateTestComponent } from './components/manager-update-test/manager-update-test.component';
 
 
 
@@ -33,10 +50,23 @@ import { Login1Component } from './components/login1/login1.component';
     SignResult2Component,
     TestComponent,
     RegistrationComponent,
-    Login1Component
+    Login1Component,
+    PractisesComponent,
+    UploadFormComponent,
+    UploadListComponent,
+    UploadDetailsComponent,
+    ManagerComponent,
+    ManagerUsersComponent,
+    CreatTestComponent,
+    TestPageComponent,
+    UploadInternComponent,
+    ManagerUpdateTestComponent
   ],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireStorageModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,

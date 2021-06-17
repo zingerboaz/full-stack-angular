@@ -27,6 +27,9 @@ export class SignUpComponent implements OnInit {
       id: new FormControl(''),
       passport: new FormControl(''),
       phonenumber: new FormControl(''),
+      password: new FormControl(''),
+      email: new FormControl(''),
+    
     });
 
     this.dataObj = [{
@@ -46,7 +49,16 @@ export class SignUpComponent implements OnInit {
       formControlName: 'phonenumber',
       type: 'inputWithDropdown',
       arr: this.phoneArr
-    }]
+    },
+    {
+      name: 'password',
+      formControlName: 'password'
+    },
+    {
+      name: 'email',
+      formControlName: 'email'
+    },
+  ]
   }
 
   sendForm() {
@@ -56,7 +68,7 @@ export class SignUpComponent implements OnInit {
     
     this.homeService.createUser(this.personForm.value).subscribe(p => {
       this.homeService.setUser(p);
-      this.router.navigate(["/app-registration"]);
+      this.router.navigate(["/app-code"]);
       
     }, err => {
       console.log('err', err);

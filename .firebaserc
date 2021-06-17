@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "my-project-97a17": {
+      "hosting": {
+        "my-client": [
+          "my-project-97a17"
+        ]
+      }
+    }
+  }
+}

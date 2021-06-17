@@ -12,6 +12,7 @@ import { ServerService } from 'src/app/services/server.service';
 export class RegistrationComponent implements OnInit {
   user: any;
   registr: any
+  errors: any = '';
   constructor(private homeService: HomeService, private serverService: ServerService,private router: Router) { }
 
   ngOnInit(): void {
@@ -36,7 +37,13 @@ export class RegistrationComponent implements OnInit {
       this.homeService.setUser(data);
       this.router.navigate(["/app-code"]);
     }, err => {
-      console.log(err);
+      console.log('err', err);
+        if(err.error && err.error.code === 11000) {
+          // email exists
+          this.errors = "Email already exists";
+          return;
+        }
+      
     });
     console.log(data)
   }

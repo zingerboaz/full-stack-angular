@@ -9,24 +9,24 @@ import { personModel } from '../components/models/person.model';
 export class ServerService {
   baseUrl = 'http://localhost:5000/';
   person: any;
-  token: any = '';
+  token: any ;
   
   constructor(private http: HttpClient) { }
 
   registerUser(a: personModel): Observable<any> {
-    return this.http.post(this.baseUrl + "api/users/create", a);
+    return this.http.post(this.baseUrl + "auth/create", a);
   }
 
   updateUser(updatepersonForm: personModel): Observable<Object> {
    console.log(updatepersonForm)
-    return this.http.put(this.baseUrl + "api/users/updateUser" ,updatepersonForm);
+    return this.http.put(this.baseUrl + "auth/updateUser" ,updatepersonForm);
   
   }
 
   createToken(emailpassword:any): Observable<any>{
     console.log(emailpassword);
     
-    return this.http.post(this.baseUrl +"api/users/login",emailpassword)
+    return this.http.post(this.baseUrl +"auth/login",emailpassword)
   }
 
 
@@ -35,7 +35,13 @@ export class ServerService {
   }
 
   postWithToken<T>(path: String, data: {}, headers?: object): Observable<T> {
+    console.log(data)
+    console.log(this.token)
     return this.http.post<T>(this.baseUrl + path, data, this.getOptions(headers))
+  
+  }
+  getWithTokenArry<T>(path: String, headers?: object): Observable<T[]> {
+    return this.http.get<T[]>(this.baseUrl + path, this.getOptions(headers))
   }
   getWithToken<T>(path: String, headers?: object): Observable<T> {
     return this.http.get<T>(this.baseUrl + path, this.getOptions(headers))
@@ -50,13 +56,6 @@ export class ServerService {
       headers: new HttpHeaders(headers)
     }
   }
-
-
-
-
-
-
-
 
 }
   

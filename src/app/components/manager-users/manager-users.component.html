@@ -1,0 +1,59 @@
+<div class="flex-container height">
+   
+  <table class="table table-bordered table-hover col-md-4 ">
+      <thead>
+        <tr>
+          <th scope="col">N</th>
+          <th scope="col">Name</th>
+          <th scope="col">ID</th>
+          <th scope="col">Phone</th>
+        </tr>
+      </thead>
+      <tbody >
+        <tr *ngFor="let user of users; index as i">
+          <th scope="row">{{i+1}}</th>
+          
+          <td>{{user.full_name}}</td>
+          <td>{{user.id}}</td>
+          <td>{{user.phone}}</td>
+        </tr>
+       
+      </tbody>
+    </table>
+  </div>
+  
+
+
+
+
+
+
+
+
+
+<!-- <div class="card col-5">
+  <div class="card-body">
+    <h5 class="card-title">{{user.full_name}}</h5>
+    <p class="card-text">{{user. id}}</p>
+  </div>
+</div> -->
+  <!-- Rounded switch -->
+  <!-- <label class="switch">
+    <input [disabled]="buttDisble" type="checkbox">
+    <span class="slider round"></span>
+  </label> -->
+
+
+
+<!-- <button  (click)='exstraInfo(user.full_name)' class="btn btn-primary">
+    for more info
+  </button>
+<p></p>
+</div>
+</div>
+<div class="collapse " [ngClass]="{show:show}"  >
+ <app-info *ngIf="morInfo" [more]="morInfo"></app-info>
+</div> -->
+
+
+<!-- <button [disabled]="buttDisble"(click)='add()'class='btn btn-success'> Realitime </button> -->

@@ -5,10 +5,13 @@ import { Injectable } from '@angular/core';
 })
 export class TokenService {
   user: any = {};
+
+ 
   constructor() { }
 
 setUser(datalogin:any){
-this.user=datalogin
+// localStorage=datalogin
+  this.user=datalogin
 }
 
 
