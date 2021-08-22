@@ -1,7 +1,13 @@
-<div class="mb-3">
-    <label for="exampleDropdownFormEmail2" class="form-label"></label>
-    <input [(ngModel)]="test.email" type="email" class="form-control" id="exampleDropdownFormEmail2" placeholder="email@example.com">
-  </div>
-  
- 
-  <button (click)='gettest()' type="submit" class="btn btn-primary">testWithToken</button>
+/* The content below is only a placeholder and can be replaced. */
+
+<div id="chart">
+  <apx-chart
+    [series]="chartOptions.series"
+    [chart]="chartOptions.chart"
+    [xaxis]="chartOptions.xaxis"
+    [dataLabels]="chartOptions.dataLabels"
+    [grid]="chartOptions.grid"
+    [stroke]="chartOptions.stroke"
+    [title]="chartOptions.title"
+  ></apx-chart>
+</div>

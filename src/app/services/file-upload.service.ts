@@ -11,11 +11,17 @@ import { ServerService } from './server.service';
 })
 export class FileUploadService {
   _test = {};
+  answersIntern={};
+  error="";
+  SelectTest={}; 
+  
   private basePath = '/uploads';
   private basePath1 ='/upload-intrn';
 
 
   constructor(private db: AngularFireDatabase, private storage: AngularFireStorage, private serverService: ServerService) { }
+  
+  
   pushFileToStorage(fileUpload: any): Observable<number | undefined> {
     const filePath = `${this.basePath}/${fileUpload.file.name}`;
     const storageRef = this.storage.ref(filePath);
@@ -104,7 +110,7 @@ export class FileUploadService {
 
           fileUpload.url = downloadURL;
           fileUpload.name = fileUpload.file.name;
-
+          this.saveFileDataTest(fileUpload);
          
           console.log(fileUpload.url);
         });
@@ -119,6 +125,27 @@ export class FileUploadService {
     return uploadTask.percentageChanges();
   }
   
+  private saveFileDataTest(fileUpload: FileUpload): void {
+    console.log("save File work");
+    console.log( fileUpload );
+     const fileUpload1={...fileUpload,...this.SelectTest}
+    this.answersIntern=fileUpload1;
+    const answerintern={ listTestAnswers: fileUpload1};
+    this.serverService.putWithToken("api/users/updateUser", answerintern).subscribe(data => {
+    console.log({ "data from db": data })
+    }, err => {
+      this.error = err.error;
+    })
+    
+    
+    
+    
+    //  localStorage.setItem('urls', JSON.stringify(fileUpload)) 
+  // let data = JSON.parse(  localStorage.getItem('urls'));
+  // console.log(typeof data,data);
+   }
+
+
 
 }
 
@@ -130,3 +157,23 @@ export function success_uplpad() {
 
 
 
+//   const data = { ...fileUpload, ...this._test };
+  // console.log(data);
+
+  //   this.serverService.postWithToken("api/tests/createTest", data).subscribe(data => {
+  //     console.log({ "data from db": data })
+
+  //   })
+
+
+
+
+
+
+
+
+
+
+
+
+  

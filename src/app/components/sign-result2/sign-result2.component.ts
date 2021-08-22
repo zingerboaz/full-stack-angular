@@ -42,7 +42,7 @@ export class SignResult2Component implements OnInit {
 
     const data = { roleNumber : this.roleNumber ,...this.user, ...obj, };
 
-    this.serverService.updateUser(data).subscribe(res => {
+    this.serverService.updateDetails(data).subscribe(res => {
       this.homeService.setUser(data);
     }, err => {
       console.log(err);

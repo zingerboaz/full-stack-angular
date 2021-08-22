@@ -12,19 +12,19 @@ export class UploadListComponent implements OnInit {
   constructor(private uploadService: FileUploadService) { }
 
   ngOnInit(): void {
-    console.log("reached oninint of upload-list");
+    // console.log("reached oninint of upload-list");
     
-    this.uploadService.getFiles(6).snapshotChanges().pipe(
-      map(changes =>
-        // store the key
+    // this.uploadService.getFiles(6).snapshotChanges().pipe(
+    //   map(changes =>
+    //     // store the key
         
-        changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
-      )
-    ).subscribe(fileUploads => {
-      this.fileUploads = fileUploads;
-      console.log("fileUploads", this.fileUploads);
+    //     changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
+    //   )
+    // ).subscribe(fileUploads => {
+    //   this.fileUploads = fileUploads;
+    //   console.log("fileUploads", this.fileUploads);
       
-    });
+    // });
   }
 
 }

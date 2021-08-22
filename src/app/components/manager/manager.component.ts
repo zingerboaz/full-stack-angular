@@ -18,11 +18,17 @@ export class ManagerComponent implements OnInit {
   managerFrom: any
   errors: any = '';
 
-
   users: any[] = [];
-  constructor(private homeService: HomeService, private serverService: ServerService,public fireBaseService:FireBaseService) { }
+ 
+  
 
-  ngOnInit(): void {
+
+
+  constructor(private homeService: HomeService, private serverService:
+   ServerService,public fireBaseService:FireBaseService) { }
+
+  
+   ngOnInit(): void {
     this.managerFrom = new FormGroup({
       full_name: new FormControl('', [Validators.required]),
       id: new FormControl(''),
@@ -30,6 +36,7 @@ export class ManagerComponent implements OnInit {
       email: new FormControl("", [Validators.required]),
     });
   }
+  
   sendForm() {
     this.homeService.createUser(this.managerFrom.value).subscribe(p => {
       this.homeService.setUser(p);
@@ -50,21 +57,31 @@ export class ManagerComponent implements OnInit {
       console.log(data)
       this.users = data;
     this.fireBaseService.allUsers=data;
+    console.log(this.fireBaseService.allUsers);
+    
     })
   }
 
   editingTest() {
     this.bool2 = !this.bool2;
   }
-  updateTestAfterScore() { 
+  
+  delete() { 
   this.bool3 = !this.bool3;
   this.serverService.getWithTokenArry("api/users/getAll").subscribe(data => {
   this.fireBaseService.allUsers=data;
   })
-
+this.serverService.getWithTokenArry("api/tests/getAllTests").subscribe(data => {
+  this.fireBaseService.allTests = data as [];
+   console.log(this.fireBaseService.allTests)
+   console.log('in get all test')
+ })
+//   this.serverService.getWithToken('lll').subscribe(user=>console.log(user)
+//  )
 
 }
 
 
 
 }
+

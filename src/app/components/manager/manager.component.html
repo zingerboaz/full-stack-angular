@@ -28,25 +28,31 @@
   </div>
 </form>
 
-
+                                                                                    
 <div class="col-auto b ">
-  <button (click)='findAllUsers()' type="submit" class="btn btn-primary mb-3">getAllUsers
+  <button (click)='findAllUsers()' type="submit" class="btn btn-primary mb-3">GET-ALL-USERS
   </button>
 </div>
-<div class="col-auto b ">
-  <button (click)='editingTest()' type="submit" class="btn btn-primary mb-3">editingTest
+<div class="col-auto b ">                                                                       
+  <button (click)='editingTest()' type="submit" class="btn btn-primary mb-3">EDITING-TEST
   </button>
 </div>
 
 <div class="col-auto b ">
-  <button (click)='updateTestAfterScore()' type="submit" class="btn btn-primary mb-3">updateTestAfterScore
+  <button (click)='delete()' type="submit" class="btn btn-primary mb-3">DELETE-USERS/TESTS
   </button>
 </div>
 
 
 <app-manager-users *ngIf="bool1" [users]="users"></app-manager-users>
 <app-upload-form  *ngIf="bool2"></app-upload-form>
-<app-manager-update-test *ngIf="bool3"></app-manager-update-test>
+ <div class="container">
+   <div class="row">
+    
+    <app-manager-update-test *ngIf="bool3"></app-manager-update-test>
+ 
+  </div>
+</div>
 <!-- <app-creat-test *ngIf="bool2" ></app-creat-test> -->
 
 

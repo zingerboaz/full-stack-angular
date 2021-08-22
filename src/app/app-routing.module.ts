@@ -12,6 +12,15 @@ import { SignResult2Component } from './components/sign-result2/sign-result2.com
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { TestPageComponent } from './components/test-page/test-page.component';
 import { TestComponent } from './components/test/test.component';
+import { CanActivate } from '@angular/router';
+import { 
+  AuthGuardService as AuthGuard 
+} from './auth/auth-guard.service';
+import { AnswerTestPageComponent } from './components/answer-test-page/answer-test-page.component';
+import { ExamResultsComponent } from './components/exam-results/exam-results.component';
+
+
+
 
 const routes: Routes = [ 
   {path:'',component:HomComponent}, 
@@ -23,9 +32,11 @@ const routes: Routes = [
   {path:'app-sign-result2',component:SignResult2Component},
   {path:'app-test',component:TestComponent},
   {path:'app-login1',component:Login1Component},
-  {path:'app-manager',component:ManagerComponent},
-  {path:'app-practises',component:PractisesComponent},
-  {path:'test-page',component:TestPageComponent}
+  {path:'app-manager',component:ManagerComponent, canActivate: [AuthGuard]},
+  {path:'app-practises',component:PractisesComponent, canActivate: [AuthGuard]},
+  {path:'test-page',component:TestPageComponent},
+  {path:'app-answer-test-page',component:AnswerTestPageComponent},
+  {path:'app-exam-results',component:ExamResultsComponent}
 ];
 
 @NgModule({

@@ -1,5 +1,12 @@
-<label>
-    <input type="file" class="text-nowrap text-truncate" (change)="selectFile($event)" />
+<label>Open the Test list
+    <select (change)='onSelect()' class="form-control" class="form-select form-select-sm" [(ngModel)]='SelectTest._id'
+        aria-label=".form-select-sm example">
+            <option *ngFor="let i of fireBaseService.allTests" [value]="i._id">{{i.subject_of_the_test}}</option>
+    </select>
+
+    
+    <button (click)='file.click()'>select file</button>
+    <input #file type="file" class="text-nowrap text-truncate" (change)="selectFile($event)" hidden />
 </label>
 
 <button class="btn btn-success btn-sm" [disabled]="!selectedFiles" (click)="upload()">

@@ -7,25 +7,24 @@ import { personModel } from '../components/models/person.model';
   providedIn: 'root'
 })
 export class ServerService {
-  baseUrl = 'http://localhost:5000/';
+  baseUrl = 'https://medical-bz.herokuapp.com/';                 
   person: any;
   token: any ;
-  
+  // 'http://localhost:5000/';
   constructor(private http: HttpClient) { }
 
   registerUser(a: personModel): Observable<any> {
     return this.http.post(this.baseUrl + "auth/create", a);
   }
 
-  updateUser(updatepersonForm: personModel): Observable<Object> {
+  updateDetails(updatepersonForm: personModel): Observable<Object> {
    console.log(updatepersonForm)
-    return this.http.put(this.baseUrl + "auth/updateUser" ,updatepersonForm);
+    return this.http.put(this.baseUrl + "auth/updateDetails" ,updatepersonForm);
   
   }
 
   createToken(emailpassword:any): Observable<any>{
     console.log(emailpassword);
-    
     return this.http.post(this.baseUrl +"auth/login",emailpassword)
   }
 
@@ -40,22 +39,47 @@ export class ServerService {
     return this.http.post<T>(this.baseUrl + path, data, this.getOptions(headers))
   
   }
+ 
+ 
+ 
+  
   getWithTokenArry<T>(path: String, headers?: object): Observable<T[]> {
     return this.http.get<T[]>(this.baseUrl + path, this.getOptions(headers))
   }
   getWithToken<T>(path: String, headers?: object): Observable<T> {
     return this.http.get<T>(this.baseUrl + path, this.getOptions(headers))
   }
+ 
+  
+  deleteWithToken<T>(path: String,data:any, headers?: object): Observable<T> {
+    console.log(data)
+    return this.http.delete<T>(this.baseUrl + path + data._id, this.getOptions(headers))
+  }
+  
+  
+  
+  putWithToken<T>(path: String,data:{}, headers?: object): Observable<T> {
+    console.log(data)
+    return this.http.put<T>(this.baseUrl + path,data, this.getOptions(headers))
+  }
 
 
   getOptions(headers?: any) {
-    headers = headers? headers : {};
+    headers = headers ? headers : {};
     headers['content-type'] = 'application/json';
-    headers['x-access-token'] = this.token;
+    headers['x-access-token'] = localStorage.getItem('token');
+    console.log(headers);
+    
     return {
       headers: new HttpHeaders(headers)
     }
   }
-
 }
   
+
+
+
+
+// postWithTokenArry<T>(path: String, headers?: object): Observable<T[]> {
+//   return this.http.post<T[]>(this.baseUrl + path,'', this.getOptions(headers))
+// }

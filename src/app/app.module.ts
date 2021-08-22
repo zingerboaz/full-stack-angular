@@ -33,7 +33,12 @@ import { CreatTestComponent } from './components/creat-test/creat-test.component
 import { TestPageComponent } from './components/test-page/test-page.component';
 import { UploadInternComponent } from './components/upload-intern/upload-intern.component';
 import { ManagerUpdateTestComponent } from './components/manager-update-test/manager-update-test.component';
-
+import {AuthGuardService} from './auth/auth-guard.service';
+import { AnswerTestPageComponent } from './components/answer-test-page/answer-test-page.component';
+import { ExamResultsComponent } from './components/exam-results/exam-results.component';
+import { SeeResultComponent } from './components/see-result/see-result.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { AdminComponent } from './components/admin/admin.component'
 
 
 @NgModule({
@@ -60,7 +65,11 @@ import { ManagerUpdateTestComponent } from './components/manager-update-test/man
     CreatTestComponent,
     TestPageComponent,
     UploadInternComponent,
-    ManagerUpdateTestComponent
+    ManagerUpdateTestComponent,
+    AnswerTestPageComponent,
+    ExamResultsComponent,
+    SeeResultComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -70,9 +79,10 @@ import { ManagerUpdateTestComponent } from './components/manager-update-test/man
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgApexchartsModule
   ],
-  providers: [],
+  providers: [AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

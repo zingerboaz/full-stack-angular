@@ -33,7 +33,7 @@ export class RegistrationComponent implements OnInit {
 
     const data = { ...this.user, ...obj }
 
-    this.serverService.updateUser(data).subscribe(res => {
+    this.serverService.updateDetails(data).subscribe(res => {
       this.homeService.setUser(data);
       this.router.navigate(["/app-code"]);
     }, err => {

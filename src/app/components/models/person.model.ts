@@ -13,3 +13,11 @@ export interface personModel
     password?:"",
 
 }
+
+export interface adminModel
+{
+    name?:"",
+    Id?:"",
+    password?:"",
+    
+}
